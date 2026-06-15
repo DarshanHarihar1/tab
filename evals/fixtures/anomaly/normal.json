@@ -1,0 +1,118 @@
+{
+  "description": "steady ~80% cache, small interspersed reads — must be silent",
+  "expect": {
+    "cache_break": false,
+    "context_jump": false
+  },
+  "turns": [
+    {
+      "usage": {
+        "input_tokens": 2000,
+        "cache_read_input_tokens": 8000,
+        "cache_creation_input_tokens": 0
+      }
+    },
+    {
+      "usage": {
+        "input_tokens": 2000,
+        "cache_read_input_tokens": 8050,
+        "cache_creation_input_tokens": 0
+      }
+    },
+    {
+      "usage": {
+        "input_tokens": 2000,
+        "cache_read_input_tokens": 8100,
+        "cache_creation_input_tokens": 0
+      }
+    },
+    {
+      "usage": {
+        "input_tokens": 2000,
+        "cache_read_input_tokens": 8150,
+        "cache_creation_input_tokens": 0
+      }
+    },
+    {
+      "usage": {
+        "input_tokens": 2000,
+        "cache_read_input_tokens": 8200,
+        "cache_creation_input_tokens": 0
+      }
+    }
+  ],
+  "events": [
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 3000,
+      "ts": "2026-01-01T00:00:00Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Edit",
+      "result_bytes": 0,
+      "ts": "2026-01-01T00:00:30Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 3000,
+      "ts": "2026-01-01T00:01:00Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Edit",
+      "result_bytes": 0,
+      "ts": "2026-01-01T00:01:30Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 3000,
+      "ts": "2026-01-01T00:02:00Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Edit",
+      "result_bytes": 0,
+      "ts": "2026-01-01T00:02:30Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 3000,
+      "ts": "2026-01-01T00:03:00Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Edit",
+      "result_bytes": 0,
+      "ts": "2026-01-01T00:03:30Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 3000,
+      "ts": "2026-01-01T00:04:00Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Edit",
+      "result_bytes": 0,
+      "ts": "2026-01-01T00:04:30Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 3000,
+      "ts": "2026-01-01T00:05:00Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Edit",
+      "result_bytes": 0,
+      "ts": "2026-01-01T00:05:30Z"
+    }
+  ]
+}

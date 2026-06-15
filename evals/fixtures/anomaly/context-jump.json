@@ -1,0 +1,100 @@
+{
+  "description": "15 consecutive large reads in one step (~150k tokens)",
+  "expect": {
+    "cache_break": false,
+    "context_jump": true
+  },
+  "turns": [],
+  "events": [
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 40000,
+      "ts": "2026-01-01T00:00:00Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 40000,
+      "ts": "2026-01-01T00:00:01Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 40000,
+      "ts": "2026-01-01T00:00:02Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 40000,
+      "ts": "2026-01-01T00:00:03Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 40000,
+      "ts": "2026-01-01T00:00:04Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 40000,
+      "ts": "2026-01-01T00:00:05Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 40000,
+      "ts": "2026-01-01T00:00:06Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 40000,
+      "ts": "2026-01-01T00:00:07Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 40000,
+      "ts": "2026-01-01T00:00:08Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 40000,
+      "ts": "2026-01-01T00:00:09Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 40000,
+      "ts": "2026-01-01T00:00:10Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 40000,
+      "ts": "2026-01-01T00:00:11Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 40000,
+      "ts": "2026-01-01T00:00:12Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 40000,
+      "ts": "2026-01-01T00:00:13Z"
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "result_bytes": 40000,
+      "ts": "2026-01-01T00:00:14Z"
+    }
+  ]
+}
