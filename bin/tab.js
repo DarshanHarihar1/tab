@@ -11,6 +11,7 @@ const path = require('path');
 const { ledgerDir, readEvents } = require('../lib/ledger');
 const { reconcile } = require('../lib/transcript');
 const waste = require('../lib/waste');
+const attributor = require('../lib/attributor');
 
 function latestSession(cwd) {
   const dir = ledgerDir(cwd);
@@ -40,9 +41,41 @@ function findTranscript(cwd, session) {
   return null;
 }
 
+// All sessions for this project, token-reconciled — for cross-session
+// per-outcome attribution ("across N sessions").
+function readAllSessions(cwd) {
+  const dir = ledgerDir(cwd);
+  let files;
+  try {
+    files = fs.readdirSync(dir).filter((f) => f.endsWith('.jsonl'));
+  } catch (e) {
+    return [];
+  }
+  let all = [];
+  for (const f of files) {
+    const session = f.replace(/\.jsonl$/, '');
+    let evs = readEvents(cwd, session);
+    const tp = findTranscript(cwd, session);
+    if (tp) evs = reconcile(evs, tp).events;
+    all = all.concat(evs);
+  }
+  return all;
+}
+
 function main() {
   const cmd = process.argv[2] || 'waste';
   const cwd = process.cwd();
+
+  if (cmd === 'report') {
+    const events = readAllSessions(cwd);
+    if (!events.length) {
+      console.log('  /tab: no session ledger found yet for this project.');
+      return;
+    }
+    console.log(attributor.render(attributor.attribute(events, { survivingLines: attributor.survivingLines(cwd) })));
+    return;
+  }
+
   const session = latestSession(cwd);
   if (!session) {
     console.log('  /tab: no session ledger found yet for this project.');
