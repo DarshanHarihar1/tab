@@ -12,6 +12,7 @@ const { ledgerDir, readEvents } = require('../lib/ledger');
 const { reconcile } = require('../lib/transcript');
 const waste = require('../lib/waste');
 const attributor = require('../lib/attributor');
+const forecast = require('../lib/forecast');
 
 function latestSession(cwd) {
   const dir = ledgerDir(cwd);
@@ -73,6 +74,27 @@ function main() {
       return;
     }
     console.log(attributor.render(attributor.attribute(events, { survivingLines: attributor.survivingLines(cwd) })));
+    return;
+  }
+
+  if (cmd === 'forecast') {
+    let state;
+    try {
+      state = JSON.parse(fs.readFileSync(path.join(ledgerDir(cwd), 'statusline-state.json'), 'utf8'));
+    } catch (e) {
+      state = null;
+    }
+    if (!state || !state.history || !state.history.length) {
+      console.log('  /tab: live forecast needs the Tab statusline. Register it in settings.json (see the tab skill).');
+      return;
+    }
+    const burn = forecast.computeBurn(state.history);
+    const snap = state.history[state.history.length - 1];
+    const session = latestSession(cwd);
+    const recent = session ? readEvents(cwd, session).filter((e) => e.kind === 'tool_use').slice(-8) : [];
+    const cls = forecast.classifyWork(recent);
+    const lever = forecast.chooseLever({ classification: cls, contextPct: snap.contextPct, minutesToEmpty: burn.minutesToEmpty });
+    console.log(forecast.formatLine(burn, snap, cls, lever) || '  /tab: not enough data yet for a forecast.');
     return;
   }
 
