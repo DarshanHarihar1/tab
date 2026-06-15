@@ -1,0 +1,14 @@
+{
+  "description": "auth.ts read 4x unchanged (3 redundant @ ~1000 tok) + config.ts read 3x unchanged (2 redundant @ ~500 tok)",
+  "sessionTokens": 120000,
+  "ground_truth_reclaimable": 4000,
+  "events": [
+    { "kind": "tool_use", "tool": "Read", "target": "/src/auth.ts", "args_hash": "a", "result_bytes": 4000 },
+    { "kind": "tool_use", "tool": "Read", "target": "/src/auth.ts", "args_hash": "a", "result_bytes": 4000 },
+    { "kind": "tool_use", "tool": "Read", "target": "/src/auth.ts", "args_hash": "a", "result_bytes": 4000 },
+    { "kind": "tool_use", "tool": "Read", "target": "/src/auth.ts", "args_hash": "a", "result_bytes": 4000 },
+    { "kind": "tool_use", "tool": "Read", "target": "/src/config.ts", "args_hash": "c", "result_bytes": 2000 },
+    { "kind": "tool_use", "tool": "Read", "target": "/src/config.ts", "args_hash": "c", "result_bytes": 2000 },
+    { "kind": "tool_use", "tool": "Read", "target": "/src/config.ts", "args_hash": "c", "result_bytes": 2000 }
+  ]
+}

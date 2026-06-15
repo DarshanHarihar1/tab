@@ -57,6 +57,12 @@ function resultBytes(result) {
   }
 }
 
+function isError(result) {
+  if (!result || typeof result !== 'object') return false;
+  if (result.is_error === true) return true;
+  return Array.isArray(result.content) && result.content.some((b) => b && b.is_error);
+}
+
 function buildEvent(payload, cwd) {
   const tool = payload.tool_name;
   return {
@@ -73,6 +79,7 @@ function buildEvent(payload, cwd) {
     cache_read: null,
     model: null,
     result_bytes: resultBytes(payload.tool_result),
+    error: isError(payload.tool_result),
     outcome_tag: null
   };
 }
@@ -88,4 +95,4 @@ if (require.main === module) {
   runHook(handle);
 }
 
-module.exports = { handle, buildEvent, argsHash, extractTarget, resultBytes, stableStringify };
+module.exports = { handle, buildEvent, argsHash, extractTarget, resultBytes, isError, stableStringify };

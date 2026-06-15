@@ -1,0 +1,12 @@
+{
+  "description": "npm test retried 5x failing (4 redundant attempts @ ~500 tok)",
+  "sessionTokens": 80000,
+  "ground_truth_reclaimable": 2000,
+  "events": [
+    { "kind": "tool_use", "tool": "Bash", "target": "npm test", "args_hash": "t", "result_bytes": 2000, "error": true },
+    { "kind": "tool_use", "tool": "Bash", "target": "npm test", "args_hash": "t", "result_bytes": 2000, "error": true },
+    { "kind": "tool_use", "tool": "Bash", "target": "npm test", "args_hash": "t", "result_bytes": 2000, "error": true },
+    { "kind": "tool_use", "tool": "Bash", "target": "npm test", "args_hash": "t", "result_bytes": 2000, "error": true },
+    { "kind": "tool_use", "tool": "Bash", "target": "npm test", "args_hash": "t", "result_bytes": 2000, "error": true }
+  ]
+}
