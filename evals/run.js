@@ -10,8 +10,10 @@ const fs = require('fs');
 const path = require('path');
 const waste = require('../lib/waste');
 const anomaly = require('../lib/anomaly');
+const forecast = require('../lib/forecast');
 
 const TOLERANCE = 0.1; // ±10% — recorded in evals/README.md
+const FORECAST_Y = 0.25; // ±25% — recorded in evals/README.md
 
 let failed = 0;
 
@@ -60,6 +62,19 @@ for (const f of fs.readdirSync(adir).filter((x) => x.endsWith('.json'))) {
 const precision = tp + fp > 0 ? tp / (tp + fp) : 1;
 console.log(`\n  precision=${precision.toFixed(2)} (target ≥0.95)  false_alarms=${fp}  misses=${fn}`);
 if (fp > 0) failed++; // near-zero false alarms is non-negotiable
+
+// --- Forecast error --------------------------------------------------------
+const fdir = path.join(dir, 'forecast');
+console.log('\nForecast error (tolerance ±' + FORECAST_Y * 100 + '%)\n');
+for (const f of fs.readdirSync(fdir).filter((x) => x.endsWith('.json'))) {
+  const fx = JSON.parse(fs.readFileSync(path.join(fdir, f), 'utf8'));
+  const got = forecast.computeBurn(fx.history).minutesToEmpty;
+  const truth = fx.expectedMinutesToEmpty;
+  const err = Math.abs(got - truth) / truth;
+  const ok = err <= FORECAST_Y;
+  if (!ok) failed++;
+  console.log(`  ${ok ? 'PASS' : 'FAIL'}  ${f.padEnd(22)} est=${got}  truth=${truth}  err=${(err * 100).toFixed(1)}%`);
+}
 
 console.log('\n' + (failed ? `${failed} check(s) failed` : 'all checks passed'));
 process.exit(failed ? 1 : 0);

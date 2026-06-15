@@ -1,0 +1,125 @@
+{
+  "name": "exploration",
+  "sessionTokens": 205000,
+  "events": [
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/models/user.ts",
+      "args_hash": "/src/models/user.ts",
+      "result_bytes": 20000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/models/user.ts",
+      "args_hash": "/src/models/user.ts",
+      "result_bytes": 20000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/models/user.ts",
+      "args_hash": "/src/models/user.ts",
+      "result_bytes": 20000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/models/user.ts",
+      "args_hash": "/src/models/user.ts",
+      "result_bytes": 20000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/models/user.ts",
+      "args_hash": "/src/models/user.ts",
+      "result_bytes": 20000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/models/user.ts",
+      "args_hash": "/src/models/user.ts",
+      "result_bytes": 20000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/models/user.ts",
+      "args_hash": "/src/models/user.ts",
+      "result_bytes": 20000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/models/user.ts",
+      "args_hash": "/src/models/user.ts",
+      "result_bytes": 20000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/models/user.ts",
+      "args_hash": "/src/models/user.ts",
+      "result_bytes": 20000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/models/user.ts",
+      "args_hash": "/src/models/user.ts",
+      "result_bytes": 20000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/models/user.ts",
+      "args_hash": "/src/models/user.ts",
+      "result_bytes": 20000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/models/user.ts",
+      "args_hash": "/src/models/user.ts",
+      "result_bytes": 20000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Grep",
+      "target": "TODO",
+      "args_hash": "g",
+      "result_bytes": 2000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Grep",
+      "target": "TODO",
+      "args_hash": "g",
+      "result_bytes": 2000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Grep",
+      "target": "TODO",
+      "args_hash": "g",
+      "result_bytes": 2000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Grep",
+      "target": "TODO",
+      "args_hash": "g",
+      "result_bytes": 2000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Grep",
+      "target": "TODO",
+      "args_hash": "g",
+      "result_bytes": 2000
+    }
+  ]
+}

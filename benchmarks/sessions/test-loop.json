@@ -1,0 +1,112 @@
+{
+  "name": "test-loop",
+  "sessionTokens": 210000,
+  "events": [
+    {
+      "kind": "tool_use",
+      "tool": "Bash",
+      "target": "npm test",
+      "args_hash": "npm test",
+      "result_bytes": 8000,
+      "error": true
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Bash",
+      "target": "npm test",
+      "args_hash": "npm test",
+      "result_bytes": 8000,
+      "error": true
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Bash",
+      "target": "npm test",
+      "args_hash": "npm test",
+      "result_bytes": 8000,
+      "error": true
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Bash",
+      "target": "npm test",
+      "args_hash": "npm test",
+      "result_bytes": 8000,
+      "error": true
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Bash",
+      "target": "npm test",
+      "args_hash": "npm test",
+      "result_bytes": 8000,
+      "error": true
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Bash",
+      "target": "npm test",
+      "args_hash": "npm test",
+      "result_bytes": 8000,
+      "error": true
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Bash",
+      "target": "npm test",
+      "args_hash": "npm test",
+      "result_bytes": 8000,
+      "error": true
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Bash",
+      "target": "npm test",
+      "args_hash": "npm test",
+      "result_bytes": 8000,
+      "error": true
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/api/handler.ts",
+      "args_hash": "/src/api/handler.ts",
+      "result_bytes": 40000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/api/handler.ts",
+      "args_hash": "/src/api/handler.ts",
+      "result_bytes": 40000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/api/handler.ts",
+      "args_hash": "/src/api/handler.ts",
+      "result_bytes": 40000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/api/handler.ts",
+      "args_hash": "/src/api/handler.ts",
+      "result_bytes": 40000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/api/handler.ts",
+      "args_hash": "/src/api/handler.ts",
+      "result_bytes": 40000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/api/handler.ts",
+      "args_hash": "/src/api/handler.ts",
+      "result_bytes": 40000
+    }
+  ]
+}
