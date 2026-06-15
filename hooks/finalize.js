@@ -10,8 +10,33 @@ const fs = require('fs');
 const path = require('path');
 const { runHook } = require('../lib/hook');
 const { appendEvent, readEvents, currentBranch, ledgerDir } = require('../lib/ledger');
-const { reconcile } = require('../lib/transcript');
+const { reconcile, parseTranscript } = require('../lib/transcript');
 const attributor = require('../lib/attributor');
+const anomaly = require('../lib/anomaly');
+
+// Returns the first anomaly not yet surfaced this session, marking it fired so
+// each anomaly nudges exactly once.
+function nextAnomaly(cwd, session, alerts) {
+  const p = path.join(ledgerDir(cwd), session + '.anomaly.json');
+  let fired = [];
+  try {
+    fired = JSON.parse(fs.readFileSync(p, 'utf8')).fired || [];
+  } catch (e) {
+    /* none yet */
+  }
+  for (const a of alerts) {
+    if (!fired.includes(a.signature)) {
+      fired.push(a.signature);
+      try {
+        fs.writeFileSync(p, JSON.stringify({ fired }));
+      } catch (e) {
+        /* best-effort */
+      }
+      return a;
+    }
+  }
+  return null;
+}
 
 function handle(payload) {
   if (process.env.TAB_REPORT === '0') return;
@@ -35,6 +60,16 @@ function handle(payload) {
     fs.writeFileSync(path.join(ledgerDir(cwd), session + '.report.txt'), attributor.render(report));
   } catch (e) {
     /* report file is best-effort */
+  }
+
+  // Trust nudge: fire (once) on a freshly detected anomaly. Takes precedence
+  // over the routine report line.
+  try {
+    const turns = payload.transcript_path ? parseTranscript(payload.transcript_path) : [];
+    const alert = nextAnomaly(cwd, session, anomaly.detect(events, turns));
+    if (alert) return { systemMessage: '⚠ [tab] ' + alert.message };
+  } catch (e) {
+    /* anomaly check is best-effort */
   }
 
   if (report.tokens <= 0) return;

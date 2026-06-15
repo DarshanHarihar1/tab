@@ -1,0 +1,10 @@
+{
+  "description": "cache-hit ratio collapses 90% -> 9% between two turns",
+  "expect": { "cache_break": true, "context_jump": false },
+  "turns": [
+    { "usage": { "input_tokens": 1000, "cache_read_input_tokens": 9000, "cache_creation_input_tokens": 0 } },
+    { "usage": { "input_tokens": 10000, "cache_read_input_tokens": 1000, "cache_creation_input_tokens": 0 } },
+    { "usage": { "input_tokens": 10500, "cache_read_input_tokens": 1100, "cache_creation_input_tokens": 0 } }
+  ],
+  "events": []
+}

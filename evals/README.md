@@ -27,6 +27,17 @@ Only the token-estimated categories contribute to `totalReclaimable`:
 - duplicate tool calls
 - retried failed commands
 
+## Anomaly precision (Phase 5)
+
+Fixtures in `fixtures/anomaly/` carry an `expect` of which anomaly types should
+fire. The harness asserts:
+
+- **False alarms must be ZERO** — a normal steady-cache session fires nothing.
+  This is non-negotiable: a false alarm destroys the trust positioning, so the
+  detector is biased heavily toward silence.
+- **Precision target Z = ≥0.95.** Recorded here.
+- The cache-break and context-jump fixtures must fire their expected alert.
+
 ## Known limitations (v1, by design)
 
 - **Conservative lower bound.** The estimate counts the direct content of each

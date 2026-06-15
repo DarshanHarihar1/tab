@@ -9,13 +9,16 @@
 const fs = require('fs');
 const path = require('path');
 const waste = require('../lib/waste');
+const anomaly = require('../lib/anomaly');
 
 const TOLERANCE = 0.1; // ±10% — recorded in evals/README.md
 
+let failed = 0;
+
+// --- Waste estimate accuracy ----------------------------------------------
 const dir = path.join(__dirname, 'fixtures');
 const fixtures = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
 
-let failed = 0;
 console.log('Waste estimate accuracy (tolerance ±' + TOLERANCE * 100 + '%)\n');
 for (const f of fixtures) {
   const fx = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
@@ -24,10 +27,39 @@ for (const f of fixtures) {
   const err = truth === 0 ? (got === 0 ? 0 : 1) : Math.abs(got - truth) / truth;
   const ok = err <= TOLERANCE;
   if (!ok) failed++;
-  console.log(
-    `  ${ok ? 'PASS' : 'FAIL'}  ${f.padEnd(22)} est=${got}  truth=${truth}  err=${(err * 100).toFixed(1)}%`
-  );
+  console.log(`  ${ok ? 'PASS' : 'FAIL'}  ${f.padEnd(22)} est=${got}  truth=${truth}  err=${(err * 100).toFixed(1)}%`);
 }
 
-console.log('\n' + (failed ? `${failed} fixture(s) out of tolerance` : 'all fixtures within tolerance'));
+// --- Anomaly precision (false alarms must be zero) -------------------------
+const adir = path.join(dir, 'anomaly');
+const types = ['cache_break', 'context_jump'];
+let tp = 0;
+let fp = 0;
+let fn = 0;
+
+console.log('\nAnomaly detection (false alarms must be ZERO)\n');
+for (const f of fs.readdirSync(adir).filter((x) => x.endsWith('.json'))) {
+  const fx = JSON.parse(fs.readFileSync(path.join(adir, f), 'utf8'));
+  const fired = new Set(anomaly.detect(fx.events, fx.turns).map((a) => a.type));
+  let ok = true;
+  for (const t of types) {
+    const exp = !!(fx.expect && fx.expect[t]);
+    const got = fired.has(t);
+    if (got && exp) tp++;
+    else if (got && !exp) {
+      fp++;
+      ok = false;
+    } else if (!got && exp) {
+      fn++;
+      ok = false;
+    }
+  }
+  if (!ok) failed++;
+  console.log(`  ${ok ? 'PASS' : 'FAIL'}  ${f.padEnd(22)} fired=[${[...fired].join(',')}]`);
+}
+const precision = tp + fp > 0 ? tp / (tp + fp) : 1;
+console.log(`\n  precision=${precision.toFixed(2)} (target ≥0.95)  false_alarms=${fp}  misses=${fn}`);
+if (fp > 0) failed++; // near-zero false alarms is non-negotiable
+
+console.log('\n' + (failed ? `${failed} check(s) failed` : 'all checks passed'));
 process.exit(failed ? 1 : 0);
