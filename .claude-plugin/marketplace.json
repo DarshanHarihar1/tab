@@ -1,0 +1,18 @@
+{
+  "name": "tab-marketplace",
+  "owner": {
+    "name": "Darshan Harihar",
+    "url": "https://github.com/DarshanHarihar1"
+  },
+  "metadata": {
+    "description": "Tab token-accountability plugin",
+    "version": "0.0.1"
+  },
+  "plugins": [
+    {
+      "name": "tab",
+      "source": "./",
+      "description": "Token waste ledger + per-outcome usage + forecast + anomaly alerts"
+    }
+  ]
+}
