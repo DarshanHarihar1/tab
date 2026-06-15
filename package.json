@@ -1,6 +1,6 @@
 {
   "name": "tab",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Token waste ledger + per-outcome usage + forecast + anomaly alerts",
   "license": "MIT",
@@ -8,6 +8,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "eval": "node evals/run.js"
   }
 }
