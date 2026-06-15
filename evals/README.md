@@ -27,6 +27,12 @@ Only the token-estimated categories contribute to `totalReclaimable`:
 - duplicate tool calls
 - retried failed commands
 
+## Forecast error (Phase 4)
+
+Fixtures in `fixtures/forecast/` carry a snapshot `history` and the true
+`expectedMinutesToEmpty`. The harness asserts the rolling burn forecast is within
+**Y = ±25%**. Recorded here.
+
 ## Anomaly precision (Phase 5)
 
 Fixtures in `fixtures/anomaly/` carry an `expect` of which anomaly types should

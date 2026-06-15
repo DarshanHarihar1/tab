@@ -73,7 +73,9 @@ function main() {
       console.log('  /tab: no session ledger found yet for this project.');
       return;
     }
-    console.log(attributor.render(attributor.attribute(events, { survivingLines: attributor.survivingLines(cwd) })));
+    const report = attributor.attribute(events, { survivingLines: attributor.survivingLines(cwd) });
+    const share = process.argv.slice(3).includes('--share');
+    console.log(share ? attributor.shareLine(report) : attributor.render(report));
     return;
   }
 

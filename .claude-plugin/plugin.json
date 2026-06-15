@@ -1,6 +1,6 @@
 {
   "name": "tab",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "Itemizes wasted tokens, attributes spend per outcome, forecasts the quota wall, flags caching anomalies.",
   "author": {
     "name": "Darshan Harihar",

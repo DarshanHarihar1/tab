@@ -74,7 +74,7 @@ test('collector work p95 < 30 ms over 100 calls', () => {
 
 // Testing criterion 5 (privacy): hook/lib sources make no network calls.
 test('no network APIs in hook or lib sources', () => {
-  const files = ['hooks/collect.js', 'hooks/session-start.js', 'hooks/finalize.js', 'lib/hook.js', 'lib/ledger.js', 'lib/transcript.js', 'lib/waste.js', 'lib/attributor.js', 'lib/forecast.js', 'lib/anomaly.js', 'statusline/tab-statusline.js', 'bin/tab.js'];
+  const files = ['hooks/collect.js', 'hooks/session-start.js', 'hooks/finalize.js', 'lib/hook.js', 'lib/ledger.js', 'lib/transcript.js', 'lib/waste.js', 'lib/attributor.js', 'lib/forecast.js', 'lib/anomaly.js', 'statusline/tab-statusline.js', 'bin/tab.js', 'install/configure.js'];
   const banned = /require\(\s*['"](https?|net|dns|tls|dgram|http2)['"]\s*\)|\bfetch\s*\(|XMLHttpRequest/;
   for (const f of files) {
     const src = fs.readFileSync(path.join(__dirname, '..', f), 'utf8');

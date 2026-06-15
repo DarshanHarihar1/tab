@@ -1,0 +1,11 @@
+{
+  "description": "linear 4%/min burn; at pct=52 the true minutes-to-empty is 12",
+  "expectedMinutesToEmpty": 12,
+  "history": [
+    { "ts": 0, "pct5h": 20 },
+    { "ts": 120000, "pct5h": 28 },
+    { "ts": 240000, "pct5h": 36 },
+    { "ts": 360000, "pct5h": 44 },
+    { "ts": 480000, "pct5h": 52 }
+  ]
+}

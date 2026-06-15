@@ -1,0 +1,104 @@
+{
+  "name": "auth-refactor",
+  "sessionTokens": 620000,
+  "events": [
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/auth/session.ts",
+      "args_hash": "/src/auth/session.ts",
+      "result_bytes": 80000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/auth/session.ts",
+      "args_hash": "/src/auth/session.ts",
+      "result_bytes": 80000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/auth/session.ts",
+      "args_hash": "/src/auth/session.ts",
+      "result_bytes": 80000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/auth/session.ts",
+      "args_hash": "/src/auth/session.ts",
+      "result_bytes": 80000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/auth/session.ts",
+      "args_hash": "/src/auth/session.ts",
+      "result_bytes": 80000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/auth/session.ts",
+      "args_hash": "/src/auth/session.ts",
+      "result_bytes": 80000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/auth/session.ts",
+      "args_hash": "/src/auth/session.ts",
+      "result_bytes": 80000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/auth/session.ts",
+      "args_hash": "/src/auth/session.ts",
+      "result_bytes": 80000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/auth/session.ts",
+      "args_hash": "/src/auth/session.ts",
+      "result_bytes": 80000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/auth/session.ts",
+      "args_hash": "/src/auth/session.ts",
+      "result_bytes": 80000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/config.ts",
+      "args_hash": "/src/config.ts",
+      "result_bytes": 16000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/config.ts",
+      "args_hash": "/src/config.ts",
+      "result_bytes": 16000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/config.ts",
+      "args_hash": "/src/config.ts",
+      "result_bytes": 16000
+    },
+    {
+      "kind": "tool_use",
+      "tool": "Read",
+      "target": "/src/config.ts",
+      "args_hash": "/src/config.ts",
+      "result_bytes": 16000
+    }
+  ]
+}
