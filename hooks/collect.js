@@ -65,6 +65,9 @@ function isError(result) {
 
 function buildEvent(payload, cwd) {
   const tool = payload.tool_name;
+  // PostToolUse names the result `tool_response` in some Claude Code versions and
+  // `tool_result` in others; accept whichever is present.
+  const result = payload.tool_response != null ? payload.tool_response : payload.tool_result;
   return {
     ts: new Date().toISOString(),
     session: payload.session_id || null,
@@ -78,8 +81,8 @@ function buildEvent(payload, cwd) {
     tokens_out: null,
     cache_read: null,
     model: null,
-    result_bytes: resultBytes(payload.tool_result),
-    error: isError(payload.tool_result),
+    result_bytes: resultBytes(result),
+    error: isError(result),
     outcome_tag: null
   };
 }

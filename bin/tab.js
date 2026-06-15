@@ -29,7 +29,10 @@ function latestSession(cwd) {
 
 function findTranscript(cwd, session) {
   const root = path.join(os.homedir(), '.claude', 'projects');
-  const encoded = path.join(root, cwd.replace(/[/.]/g, '-'), session + '.jsonl');
+  // Claude Code encodes the project dir by replacing every non-alphanumeric
+  // character with '-' (e.g. C:\Users\me → C--Users-me). Must match exactly or
+  // the primary lookup misses on Windows; the scan below is the fallback.
+  const encoded = path.join(root, cwd.replace(/[^a-zA-Z0-9]/g, '-'), session + '.jsonl');
   if (fs.existsSync(encoded)) return encoded;
   try {
     for (const d of fs.readdirSync(root)) {
@@ -74,6 +77,10 @@ function main() {
       return;
     }
     const report = attributor.attribute(events, { survivingLines: attributor.survivingLines(cwd) });
+    if (report.tokens <= 0) {
+      console.log('  /tab: no token-bearing activity recorded yet. Do some real work in a\n        session (reads, edits, commands), then run /tab report.');
+      return;
+    }
     const share = process.argv.slice(3).includes('--share');
     console.log(share ? attributor.shareLine(report) : attributor.render(report));
     return;
